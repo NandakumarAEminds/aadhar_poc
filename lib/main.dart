@@ -1,17 +1,11 @@
 
 import 'dart:io';
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image/image.dart' as img;
 
-import 'ML/Recognition.dart';
-import 'ML/Recognition.dart';
-import 'ML/Recognition.dart';
 import 'ML/Recognition.dart';
 import 'ML/Recognizer.dart';
 import 'Screens/HomeScreen.dart';
@@ -25,6 +19,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,7 +31,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -128,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
       img.Image croppedFace = img.copyCrop(image!, x:faceRect.left.toInt(),y:faceRect.top.toInt(),width:faceRect.width.toInt(),height:faceRect.height.toInt());
 
       //TODO pass cropped face to face recognition model
-      Recognition recognition = recognizer.recognize(croppedFace!, faceRect);
+      Recognition recognition = recognizer.recognize(croppedFace, faceRect);
       if(recognition.distance>1.0){
         recognition.name = "Unknown";
       }
@@ -136,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       //TODO show face registration dialogue
       if(register){
-        showFaceRegistrationDialogue(croppedFace!,recognition);
+        showFaceRegistrationDialogue(croppedFace,recognition);
         register = false;
       }
 
@@ -162,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20,),
-              Image.memory(Uint8List.fromList(img.encodeBmp(croppedFace!)),width: 200,height: 200,),
+              Image.memory(Uint8List.fromList(img.encodeBmp(croppedFace)),width: 200,height: 200,),
               SizedBox(
                 width: 200,
                 child: TextField(
@@ -225,15 +221,15 @@ class _MyHomePageState extends State<MyHomePage> {
         int g = (y1192 - 833 * v - 400 * u);
         int b = (y1192 + 2066 * u);
 
-        if (r < 0)
+        if (r < 0) {
           r = 0;
-        else if (r > 262143) r = 262143;
-        if (g < 0)
+        } else if (r > 262143) r = 262143;
+        if (g < 0) {
           g = 0;
-        else if (g > 262143) g = 262143;
-        if (b < 0)
+        } else if (g > 262143) g = 262143;
+        if (b < 0) {
           b = 0;
-        else if (b > 262143) b = 262143;
+        } else if (b > 262143) b = 262143;
 
         // I don't know how these r, g, b values are defined, I'm just copying what you had bellow and
         // getting their 8-bit values.
@@ -323,7 +319,9 @@ class _MyHomePageState extends State<MyHomePage> {
     final format = InputImageFormatValue.fromRawValue(frame!.format.raw);
     if (format == null ||
         (Platform.isAndroid && format != InputImageFormat.nv21) ||
-        (Platform.isIOS && format != InputImageFormat.bgra8888)) return null;
+        (Platform.isIOS && format != InputImageFormat.bgra8888)) {
+      return null;
+    }
 
     if (frame!.planes.length != 1) return null;
     final plane = frame!.planes.first;

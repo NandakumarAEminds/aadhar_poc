@@ -1,10 +1,9 @@
 import 'dart:typed_data';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../DB/DatabaseHelper.dart';
 
 class RegisteredFacesScreen extends StatefulWidget {
-  const RegisteredFacesScreen({Key? key}) : super(key: key);
+  const RegisteredFacesScreen({super.key});
 
   @override
   _RegisteredFacesScreenState createState() => _RegisteredFacesScreenState();

@@ -1,5 +1,4 @@
 
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
@@ -43,15 +42,15 @@ class Util{
         int g = (y1192 - 833 * v - 400 * u);
         int b = (y1192 + 2066 * u);
 
-        if (r < 0)
+        if (r < 0) {
           r = 0;
-        else if (r > 262143) r = 262143;
-        if (g < 0)
+        } else if (r > 262143) r = 262143;
+        if (g < 0) {
           g = 0;
-        else if (g > 262143) g = 262143;
-        if (b < 0)
+        } else if (g > 262143) g = 262143;
+        if (b < 0) {
           b = 0;
-        else if (b > 262143) b = 262143;
+        } else if (b > 262143) b = 262143;
 
         // I don't know how these r, g, b values are defined, I'm just copying what you had bellow and
         // getting their 8-bit values.

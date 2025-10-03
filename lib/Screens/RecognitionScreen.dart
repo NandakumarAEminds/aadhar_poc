@@ -1,14 +1,9 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 import 'dart:io';
 import 'dart:ui';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
-import 'package:flutter/services.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image/image.dart' as img;
 
@@ -179,7 +174,9 @@ class _RecognitionScreenState extends State<RecognitionScreen> {
     final format = InputImageFormatValue.fromRawValue(frame!.format.raw);
     if (format == null ||
         (Platform.isAndroid && format != InputImageFormat.nv21) ||
-        (Platform.isIOS && format != InputImageFormat.bgra8888)) return null;
+        (Platform.isIOS && format != InputImageFormat.bgra8888)) {
+      return null;
+    }
 
     if (frame!.planes.length != 1) return null;
     final plane = frame!.planes.first;

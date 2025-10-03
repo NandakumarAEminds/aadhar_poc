@@ -70,43 +70,45 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-                child: Column(
-                  children: [
-                    _actionCard(
-                      context,
-                      icon: Icons.person_add,
-                      title: "Register New Face",
-                      subtitle: "Capture and store a new user face",
-                      onTap: () => Navigator.push(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      _actionCard(
                         context,
-                        MaterialPageRoute(builder: (_) => const RegistrationScreen()),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    _actionCard(
-                      context,
-                      icon: Icons.search,
-                      title: "Recognize Face",
-                      subtitle: "Identify registered faces in real-time",
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => const RecognitionScreen()),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    _actionCard(
-                      context,
-                      icon: Icons.list,
-                      title: "Registered Faces",
-                      subtitle: "View all stored face data",
-                      onTap: () {
-                        Navigator.push(
+                        icon: Icons.person_add,
+                        title: "Register New Face",
+                        subtitle: "Capture and store a new user face",
+                        onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => const RegisteredFacesScreen()),
-                        );
-                      }
-                    ),
-                  ],
+                          MaterialPageRoute(builder: (_) => const RegistrationScreen()),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      _actionCard(
+                        context,
+                        icon: Icons.search,
+                        title: "Recognize Face",
+                        subtitle: "Identify registered faces in real-time",
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const RecognitionScreen()),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      _actionCard(
+                        context,
+                        icon: Icons.list,
+                        title: "Registered Faces",
+                        subtitle: "View all stored face data",
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => const RegisteredFacesScreen()),
+                          );
+                        }
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

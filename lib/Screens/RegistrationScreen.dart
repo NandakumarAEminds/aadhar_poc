@@ -3,7 +3,6 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -316,7 +315,7 @@ class _RecognitionScreenState extends State<RegistrationScreen> {
       isBusy = false;
       getEmb = false;
       _scanResults = recognitions;
-      print("in perform face current step=" + _currentStep.toString());
+      print("in perform face current step=$_currentStep");
     });
   }
 
